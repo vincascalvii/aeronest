@@ -1,0 +1,29 @@
+{
+  "flightId": {
+    "S": "FL001"
+  },
+  "flightNumber": {
+    "S": "QF001"
+  },
+  "airline": {
+    "S": "Qantas"
+  },
+  "origin": {
+    "S": "BNE"
+  },
+  "destination": {
+    "S": "SYD"
+  },
+  "departureTime": {
+    "S": "2026-12-01T08:00:00Z"
+  },
+  "arrivalTime": {
+    "S": "2026-12-01T09:35:00Z"
+  },
+  "price": {
+    "N": "250"
+  },
+  "currency": {
+    "S": "AUD"
+  }
+}
