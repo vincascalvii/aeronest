@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { GetCommand } from '@aws-sdk/lib-dynamodb';
+import { GetCommand, PutCommand } from '@aws-sdk/lib-dynamodb';
 
 import { DynamoDBService } from '../../database/dynamodb.service.js';
 import { Flight } from '../entities/flight.entity.js';
@@ -25,8 +25,7 @@ export class FlightsRepository {
    * flights table.
    *
    * @param id - The unique identifier of the flight.
-   * @returns A promise resolving to the flight record, or undefined
-   * if no matching record exists.
+   * @returns A promise resolving to the flight record, or undefined if no matching record exists.
    */
   async findById(id: string): Promise<Flight | undefined> {
     const result = await this.dynamoDBService.documentClient.send(
@@ -43,5 +42,25 @@ export class FlightsRepository {
     // DynamoDB does not validate records against TypeScript interfaces.
     // This assertion assumes stored records follow the Flight structure.
     return result.Item as Flight | undefined;
+  }
+
+  /**
+   * Saves a new flight record to DynamoDB.
+   *
+   * Prevents an existing flight ID from being overwritten.
+   *
+   * @param flight - The flight record to persist.
+   * @returns A promise that resolves when the operation completes.
+   */
+  async create(flight: Flight): Promise<void> {
+    await this.dynamoDBService.documentClient.send(
+      new PutCommand({
+        TableName: this.configService.getOrThrow<string>(
+          'DYNAMODB_FLIGHTS_TABLE',
+        ),
+        Item: flight,
+        ConditionExpression: 'attribute_not_exists(flightId)',
+      }),
+    );
   }
 }

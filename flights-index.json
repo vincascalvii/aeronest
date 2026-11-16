@@ -1,0 +1,37 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+      "flightId": {
+        "type": "keyword"
+      },
+      "flightNumber": {
+        "type": "keyword"
+      },
+      "airline": {
+        "type": "keyword"
+      },
+      "origin": {
+        "type": "keyword"
+      },
+      "destination": {
+        "type": "keyword"
+      },
+      "departureTime": {
+        "type": "date"
+      },
+      "arrivalTime": {
+        "type": "date"
+      },
+      "price": {
+        "type": "double"
+      },
+      "currency": {
+        "type": "keyword"
+      }
+    }
+  }
+}

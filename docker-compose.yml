@@ -1,0 +1,20 @@
+services:
+  elasticsearch:
+    # Uses the official Elasticsearch Docker image.
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.6
+    container_name: elasticsearch
+    environment:
+      # Tells Elasticsearch we're running a standalone development node.
+      - discovery.type=single-node
+      # Disables authentication and TLS for this environment.
+      - xpack.security.enabled=false
+      # Gives the Elasticsearch JVM a 1 GB heap.
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - '127.0.0.1:9200:9200'
+    volumes:
+      # Keeps Elasticsearch data when the container is stopped or recreated.
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+volumes:
+  elasticsearch_data:

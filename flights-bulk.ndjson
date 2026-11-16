@@ -1,0 +1,7 @@
+
+{"index":{"_id":"FL001"}}
+{"flightId":"FL001","flightNumber":"QF123","airline":"Qantas","origin":"BNE","destination":"SYD","departureTime":"2026-12-01T08:00:00Z","arrivalTime":"2026-12-01T09:35:00Z","price":250,"currency":"AUD"}
+{"index":{"_id":"FL002"}}
+{"flightId":"FL002","flightNumber":"VA934","airline":"Virgin Australia","origin":"BNE","destination":"SYD","departureTime":"2026-12-01T09:30:00Z","arrivalTime":"2026-12-01T11:05:00Z","price":220,"currency":"AUD"}
+{"index":{"_id":"FL003"}}
+{"flightId":"FL003","flightNumber":"QF600","airline":"Qantas","origin":"BNE","destination":"MEL","departureTime":"2026-12-01T10:00:00Z","arrivalTime":"2026-12-01T12:25:00Z","price":280,"currency":"AUD"}
